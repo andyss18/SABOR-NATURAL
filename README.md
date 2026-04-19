@@ -1,2 +1,0 @@
-# SABOR-NATURAL
-licuados
