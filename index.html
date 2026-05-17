@@ -1,224 +1,317 @@
 <!DOCTYPE html>
 <html lang="es">
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-
 <head>
     <meta charset="UTF-8">
-    <title>Sabor Natural</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Licuamanía - Mezcla tu antojo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    
     <style>
+        :root {
+            --rosa-principal: #e6397b;
+            --amarillo-vibrante: #ffcc00;
+            --oscuro-logo: #241212;
+            --fondo-suave: #fff5f7;
+            --rosa-claro: #fce4ec;
+        }
+
         body {
-            text-align: center;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #fff8f0;
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--fondo-suave);
+            color: var(--oscuro-logo);
         }
 
-        .logo {
-            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
-            flex: 1;
-
+        /* Navbar principal */
+        .navbar {
+            background-color: var(--oscuro-logo) !important;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .navbar-brand img {
+            transition: transform 0.3s;
+        }
+        .navbar-brand img:hover {
+            transform: scale(1.05);
+        }
+        .nav-link {
+            color: #ffffff !important;
+            font-weight: 600;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+        .nav-link:hover {
+            color: var(--amarillo-vibrante) !important;
         }
 
-        header {
-            text-align: left;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background-color: #ff914d;
+        /* Hero Section (Bienvenida) */
+        .hero-section {
+            background: linear-gradient(135deg, var(--rosa-principal), #ff5794);
             color: white;
-            padding: 10px;
-            position: relative;
+            padding: 60px 20px;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            box-shadow: 0 5px 15px rgba(230, 57, 123, 0.2);
+        }
+        .hero-title {
+            font-weight: 800;
+            font-size: 2.8rem;
+            color: var(--amarillo-vibrante);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
 
-        .header-info {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            text-align: center;
-        }
-
-        nav {
-            display: flex;
-            align-items: center;
-            background-color: #ffb347;
-            justify-content: space-around;
-            padding: 10px;
-            text-align: center;
-        }
-
-        nav a {
-            margin: 15px;
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-        }
-
+        /* Estilos de Secciones */
         section {
-            padding: 20px;
-            margin: 80px;
-            align-items: center;
-            font-size: 20px;
-            margin-bottom: 15px;
-
+            padding: 60px 0;
+        }
+        .section-title {
+            font-weight: 800;
+            position: relative;
+            margin-bottom: 40px;
+            color: var(--oscuro-logo);
+            text-transform: uppercase;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 5px;
+            background-color: var(--rosa-principal);
+            margin: 10px auto 0;
+            border-radius: 3px;
         }
 
-        .container {
-            display: flex;
-            flex-direction: column;
-            flex: nowrap;
-            align-items: center;
+        /* Tarjetas del Menú */
+        .category-subtitle {
+            color: var(--rosa-principal);
+            font-weight: 700;
+            margin-bottom: 25px;
+            background-color: var(--rosa-claro);
+            display: inline-block;
+            padding: 8px 20px;
+            border-radius: 50px;
+        }
+        .card-menu {
+            border: none;
+            border-radius: 20px;
+            overflow: hidden;
+            background-color: #ffffff;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+        .card-menu:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(230, 57, 123, 0.15);
+        }
+        .card-menu img {
+            height: 220px;
+            object-fit: cover;
+        }
+        .price-badge {
+            background-color: var(--amarillo-vibrante);
+            color: var(--oscuro-logo);
+            font-weight: 800;
+            padding: 5px 15px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 10px;
         }
 
-        .col {
-            margin: 15px;
-            max-width: 500px;
+        /* Sección Misión/Visión */
+        .info-box {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            border-left: 5px solid var(--rosa-principal);
+            height: 100%;
         }
 
+        /* Footer */
         footer {
-            background-color: #ff914d;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            margin-top: 20px;
+            background-color: var(--oscuro-logo);
+            color: #ffffff;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+        footer p {
+            margin: 0;
+        }
+        .footer-highlight {
+            color: var(--amarillo-vibrante);
+            font-weight: 600;
         }
     </style>
 </head>
 
 <body>
 
-    <header>
-        <div class="logo">
-            <a href="index.html"><img src="Logo.png" alt="Logo Sabor Natural"
-                    style="height: 100px; margin-top: 10px;"></a>
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="../img/jeje.png" alt="Licuamanía Logo" height="65" class="d-inline-block align-text-top me-2">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item"><a class="nav-link" href="#inicio">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#productos">Menú</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#nosotros">Nosotros</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="header-info">
-            <h1> Sabor natural</h1>
-            <p>Sabor natural en cada sorbo</p>
+    </nav>
+
+    <header id="inicio" class="hero-section text-center">
+        <div class="container">
+            <h1 class="hero-title mb-3">Licuamanía</h1>
+            <p class="fs-4 fw-bold mb-4">✨ Mezcla tu antojo ✨</p>
+            <div class="row justify-content-center">
+                <div class="col-md-8 bg-white text-dark p-4 rounded-4 shadow-sm text-start" style="opacity: 0.95;">
+                    <p class="mb-3">
+                        En <strong>Licuamanía</strong> nos dedicamos a ofrecer licuados 100% naturales,
+                        preparados al momento con fruta fresca de la mejor calidad y sin ningún tipo de
+                        conservadores ni aditivos artificiales.
+                    </p>
+                    <p class="mb-3">
+                        Creemos que lo natural no solo sabe mejor, sino que también aporta bienestar a tu cuerpo
+                        y energía a tu día. Nuestro compromiso es brindarte bebidas saludables, deliciosas
+                        y refrescantes que se adapten a tu estilo de vida.
+                    </p>
+                    <p class="mb-0">
+                        Cada licuado está pensado para resaltar el sabor auténtico de la fruta, combinando
+                        ingredientes cuidadosamente seleccionados para ofrecerte una experiencia única en cada sorbo.
+                    </p>
+                </div>
+            </div>
         </div>
     </header>
 
-    <nav>
-        <a href="#inicio">Inicio</a>
-        <a href="#productos">Productos</a>
-        <a href="#mision">Misión</a>
-        <a href="#contacto">Contacto</a>
-    </nav>
-
-    <section id="inicio">
-
-        <h2>Bienvenidos a Sabor Natural</h2>
-
-        <p>
-            En <strong>Sabor Natural</strong> nos dedicamos a ofrecer licuados 100% naturales,
-            preparados al momento con fruta fresca de la mejor calidad y sin ningún tipo de
-            conservadores ni aditivos artificiales.
-        </p>
-
-        <p>
-            Creemos que lo natural no solo sabe mejor, sino que también aporta bienestar a tu cuerpo
-            y energía a tu día. Nuestro compromiso es brindarte bebidas saludables, deliciosas
-            y refrescantes que se adapten a tu estilo de vida.
-        </p>
-
-        <p>
-            Cada licuado está pensado para resaltar el sabor auténtico de la fruta, combinando
-            ingredientes cuidadosamente seleccionados para ofrecerte una experiencia única
-            en cada sorbo.
-        </p>
-    </section>
-
-    <section id="productos" style="text-align: center;">
-
-
-        <h2>🥤 MENÚ DE LICUADOS 🥤</h2>
-        <h3>🍓 Sabores básicos 🍓</h3>
+    <section id="productos">
         <div class="container text-center">
-            <div class="row">
-                <div class="card col" style="width: 18rem;">
-                    <img src="../img/FRESA.jpg" class="card-img-top" alt="sabor fresa">
-                    <div class="card-body">
-                        <h4>LICUADO DE FRESA Q10.00</h4>
-                        <p class="card-text">Licuado de fresa con leche</p>
+            <h2 class="section-title">🥤 Menú de Licuados 🥤</h2>
+            
+            <div class="mb-5">
+                <h3 class="category-subtitle">🍓 Sabores Básicos 🍓</h3>
+                <div class="row g-4 justify-content-center">
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="card-menu">
+                            <img src="../img/FRESA.jpg" class="card-img-top" alt="Licuado de Fresa">
+                            <div class="card-body">
+                                <h5 class="fw-bold mb-2">Licuado de Fresa</h5>
+                                <p class="text-muted small">Licuado de fresa con leche fresca.</p>
+                                <span class="price-badge">Q10.00</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="card col" style="width: 18rem;">
-                    <img src="../img/BANANA.jpg" class="card-img-top" alt="sabor fresa">
-                    <div class="card-body">
-                        <h4>LICUADO DE BANANO Q10.00</h4>
-                        <p class="card-text">Licuado de banano con leche</p>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="card-menu">
+                            <img src="../img/BANANA.jpg" class="card-img-top" alt="Licuado de Banano">
+                            <div class="card-body">
+                                <h5 class="fw-bold mb-2">Licuado de Banano</h5>
+                                <p class="text-muted small">Licuado de banano con leche fresca.</p>
+                                <span class="price-badge">Q10.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="card-menu">
+                            <img src="../img/FRESA.jpg" class="card-img-top" alt="Licuado de Papaya">
+                            <div class="card-body">
+                                <h5 class="fw-bold mb-2">Licuado de Papaya</h5>
+                                <p class="text-muted small">Licuado de papaya con un toque de canela.</p>
+                                <span class="price-badge">Q10.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="card-menu">
+                            <img src="../img/BANANA.jpg" class="card-img-top" alt="Licuado Mixto">
+                            <div class="card-body">
+                                <h5 class="fw-bold mb-2">Licuado Mixto</h5>
+                                <p class="text-muted small">Combinación perfecta de fresa, banano y leche.</p>
+                                <span class="price-badge">Q10.00</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-
-            <div class="row">
-                <div class="card col" style="width: 18rem;">
-                    <img src="../img/FRESA.jpg" class="card-img-top" alt="sabor fresa">
-                    <div class="card-body">
-                        <h4>LICUADO DE PAPAYA Q10.00</h4>
-                        <p class="card-text">Licuado de papaya con canela</p>
+            <div>
+                <h3 class="category-subtitle">⭐ Licuados Especiales ⭐</h3>
+                <div class="row g-4 justify-content-center">
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="card-menu">
+                            <img src="../img/OREO.jpg" class="card-img-top" alt="Licuado de Oreo">
+                            <div class="card-body">
+                                <h5 class="fw-bold mb-2">Licuado de Oreo</h5>
+                                <p class="text-muted small">Delicioso licuado de galleta Oreo con leche y banano.</p>
+                                <span class="price-badge">Q13.00</span>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="card col" style="width: 18rem;">
-                    <img src="../img/BANANA.jpg" class="card-img-top" alt="sabor fresa">
-                    <div class="card-body">
-                        <h4>LICUADO MIXTO Q10.00</h4>
-                        <p class="card-text">Licuado mixto con fresa y banano con leche</p>
+                    <div class="col-sm-6 col-md-4 col-lg-3">
+                        <div class="card-menu">
+                            <img src="../img/OREO.jpg" class="card-img-top" alt="Licuado Crispy">
+                            <div class="card-body">
+                                <h5 class="fw-bold mb-2">Licuado Crispy</h5>
+                                <p class="text-muted small">Licuado súper crujiente con base de leche y banano.</p>
+                                <span class="price-badge">Q13.00</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-
-
 
         </div>
+    </section>
 
-
-        <h3 style="margin: 20px;">⭐ Licuados Especiales ⭐</h3>
-        <div class="container text-center">
-            <div class="row">
-                <div class="card col" style="width: 18rem;">
-                    <img src="../img/OREO.jpg" class="card-img-top" alt="sabor fresa">
-                    <div class="card-body">
-                        <h4>LICUADO DE OREO Q13.00</h4>
-                        <p class="card-text">Licuado de Oreo con leche y banano</p>
+    <section id="nosotros" class="bg-light">
+        <div class="container">
+            <h2 class="section-title text-center">Nuestra Esencia</h2>
+            <div class="row g-4 mt-2">
+                <div class="col-md-6">
+                    <div class="info-box">
+                        <h3 class="fw-bold h4 mb-3" style="color: var(--rosa-principal);">🎯 Misión</h3>
+                        <p class="fs-5 mb-0">Ser reconocidos como la mejor opción local en licuados, brindando frescura, sabor inigualable y nutrición a cada uno de nuestros clientes.</p>
                     </div>
                 </div>
-                <div class="card col" style="width: 18rem;">
-                    <img src="../img/OREO.jpg" class="card-img-top" alt="sabor fresa">
-                    <div class="card-body">
-                        <h4>LICUADO CRISPY Q13.00</h4>
-                        <p class="card-text">Licuado crujiente con leche y banano</p>
+                <div class="col-md-6">
+                    <div class="info-box" style="border-left-color: var(--amarillo-vibrante);">
+                        <h3 class="fw-bold h4 mb-3" style="color: var(--oscuro-logo);">👁️ Visión</h3>
+                        <p class="fs-5 mb-0">Ser el emprendimiento local preferido en bebidas naturales, expandiendo nuestro concepto de "mezclar tu antojo" de forma saludable.</p>
                     </div>
                 </div>
             </div>
         </div>
-
-
-
-    </section>
-
-    <section id="mision">
-        <h2>Misión</h2>
-        <p>Ser reconocidos como la mejor opcion local en licuados.</p>
-
-        <h2>Visión</h2>
-        <p>Ser el emprendimiento local preferido en bebidas naturales.</p>
     </section>
 
     <section id="contacto">
-        <h2>Contacto</h2>
-        <p>Teléfono: 3656-5286</p>
-        <p>Instagram: @sabornatural</p>
-        <p>Ubicación: Guatemala, Guatemala</p>
+        <div class="container text-center">
+            <h2 class="section-title">📞 ¡Contáctanos! </h2>
+            <div class="row justify-content-center mt-4">
+                <div class="col-md-6 bg-white p-4 rounded-4 shadow-sm">
+                    <p class="fs-5 mb-3"><strong>📱 Teléfono:</strong> 3656-5286</p>
+                    <p class="fs-5 mb-3"><strong>📸 Instagram:</strong> <a href="https://instagram.com/sabornatural" target="_blank" style="color: var(--rosa-principal); text-decoration: none; font-weight: 600;">@sabornatural</a></p>
+                    <p class="fs-5 mb-0"><strong>📍 Ubicación:</strong> Guatemala, Guatemala</p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <footer>
-        <p>© 2026 Sabor Natural - Proyecto </p>
+    <footer class="text-center">
+        <div class="container">
+            <p class="mb-2">© 2026 <span class="footer-highlight">Licuamanía</span> - Todos los derechos reservados</p>
+            <p class="small text-muted">Hecho con ❤️ para tu emprendimiento</p>
+        </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
